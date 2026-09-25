@@ -2,25 +2,28 @@
 # FOLLOW ME ON GITHUB & IF YOU ARE SATISFIED, STAR MY REPOSITORIES ❤️
 
 
-#port scanner func with error handling
-def scan(port ,target ):
-
+# port scanner func
+def scan(port, target):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(0.5)
     try:
-        sock = socket.socket(socket.AF_INET , socket.SOCK_STREAM)
-        sock.settimeout(0.5)
-
-        if sock.connect_ex((target , port)) == 0:
-            sock.close()
-            try :
+        result = sock.connect_ex((target, port))
+        if result == 0:
+            try:
                 service = socket.getservbyport(port, "tcp")
-                print(f"\r {Fore.GREEN}[+] Port {port} is open :: Service --> {service} {Style.RESET_ALL}")
-                open_ports.append(str(str(port) + " : " + service))
-            except Exception :
-                print(f"\r {Fore.GREEN}[+] Port {port} is open :: Service --> {Fore.YELLOW}unknown {Style.RESET_ALL}")
-                open_ports.append(str(str(port)+ " : "+ "unknown"))
+                print(f"{Fore.GREEN}[+] Port {port} is open :: Service --> {service}{Style.RESET_ALL}")
+                open_ports.append(f"{port} : {service}")
+            except Exception:
+                print(f"{Fore.WHITE}[+] Port {port} is open :: Service --> unknown{Style.RESET_ALL}")
+                service = "unknown"
 
+        else:
+            print(f"{Fore.RED}[-] Port {port} is closed{Style.RESET_ALL}")
     except Exception as e:
-        print(f"\n {Fore.RED}[ERR] Error occured : {e}{Style.RESET_ALL}")
+        print(f"{Fore.RED}[ERR] Error occurred: {e}{Style.RESET_ALL}")
+    finally:
+        sock.close()
+
 
 
 # Save data on a txt file
@@ -71,9 +74,8 @@ def main():
 
     #looping through the ports with halo scan animation
     print(f"\n{Fore.GREEN}[#]{Fore.CYAN} Scan {target} from port {startP} to {endP} >>> {Style.RESET_ALL}\n")
-    with Halo(text='Scanning...', spinner='dots'):
-        for port in range(startP , endP+1):
-            scan(port ,target)
+    for port in range(startP , endP+1):
+        scan(port ,target)
 
     EndTime = time.time() #scan end
 
