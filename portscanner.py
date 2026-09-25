@@ -2,6 +2,14 @@
 # FOLLOW ME ON GITHUB & IF YOU ARE SATISFIED, STAR MY REPOSITORIES ❤️
 
 
+# load yaml : output file path
+def load_config():
+    with open("config.yaml", "r") as f:
+        config = yaml.safe_load(f)
+
+    return config["output"]["path"]
+
+
 # port scanner func
 def scan(port, target):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -28,7 +36,8 @@ def scan(port, target):
 
 # Save data on a txt file
 def save():
-    with open("open-ports.txt","w") as f:
+    output_path = load_config()
+    with open(output_path,"w") as f:
         for op in open_ports :
             f.write(op + "\n")
     print(f"\n{Fore.GREEN}[#]{Fore.CYAN} Open port list & services saved in \"open-ports.txt\" {Style.RESET_ALL}")
@@ -87,14 +96,15 @@ def main():
     action = input("\n[*] Save & Exit ? (y/n) :").lower().strip()
     if action == "y":
         save()
-        sys.exit(f"\n{Back.BLACK}{Style.BRIGHT}{Fore.LIGHTMAGENTA_EX} <============= {Fore.LIGHTRED_EX}Thank YOU !!! , {Fore.LIGHTYELLOW_EX}Don't forget to follow me on Github {Fore.LIGHTMAGENTA_EX}=============> {Style.RESET_ALL}")
+        sys.exit(f"\n{Back.BLACK}{Style.BRIGHT}{Fore.LIGHTMAGENTA_EX} <============= {Fore.LIGHTRED_EX}Thank YOU !!! , {Fore.LIGHTYELLOW_EX}Follow me on Github {Fore.LIGHTMAGENTA_EX}=============> {Style.RESET_ALL}")
     else :
-        sys.exit(f"\n{Back.BLACK}{Style.BRIGHT}{Fore.LIGHTMAGENTA_EX} <============= {Fore.LIGHTRED_EX}Thank YOU !!! , {Fore.LIGHTYELLOW_EX}Don't forget to follow me on Github {Fore.LIGHTMAGENTA_EX}=============> {Style.RESET_ALL}")
+        sys.exit(f"\n{Back.BLACK}{Style.BRIGHT}{Fore.LIGHTMAGENTA_EX} <============= {Fore.LIGHTRED_EX}Thank YOU !!! , {Fore.LIGHTYELLOW_EX}Follow me on Github {Fore.LIGHTMAGENTA_EX}=============> {Style.RESET_ALL}")
 
 
 if __name__ == '__main__':
     import sys, socket, pyfiglet ,time
     from colorama import Fore, Back, Style
     from halo import Halo
+    import yaml
 
     main()

@@ -1,3 +1,4 @@
 colorama==0.4.6
 halo==0.0.31
 pyfiglet==1.0.2
+pyyaml
