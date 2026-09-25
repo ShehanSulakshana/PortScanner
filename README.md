@@ -1,99 +1,96 @@
 # 🔍 PortScanner
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat)
-![Purpose](https://img.shields.io/badge/Purpose-Educational-orange?style=flat)
+[![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![Purpose](https://img.shields.io/badge/Purpose-Educational-orange?style=for-the-badge)](https://github.com/ShehanSulakshana/PortScanner)
 
-A lightweight Python-based port scanner that detects open ports and running services on any host or IP address in real time. Built as a hands-on cybersecurity tool for network reconnaissance and vulnerability assessment practice.
+> ⚠️ **Disclaimer:** This tool is built strictly for **educational and authorized security testing purposes only**. Scanning targets without prior mutual consent is illegal. The author assumes no liability and is not responsible for any misuse or damage caused by this program.
 
-> ⚠️ **For educational and authorized use only.** Never scan systems or networks without explicit permission. Unauthorized port scanning may be illegal in your jurisdiction.
+---
+
+## 📌 Overview
+
+**PortScanner** is a lightweight, Python-based network reconnaissance tool designed to scan target hosts, discover active ports, and identify running services in real time. Built using core networking fundamentals, it serves as a practical project for learning how socket connections and network reconnaissance operate under the hood.
 
 ---
 
 ## ✨ Features
 
-- 🌐 Accepts both **IP addresses and domain names** (auto-resolves hostname to IP)
-- 🎯 **Custom port range** scanning — target exactly what you need
-- ⚡ **Real-time output** — open ports and services displayed as they're discovered
-- 💾 **Export results** — save open ports and services to a `.txt` file
-- 🏷️ **Service detection** — identifies the service running on each open port (e.g. HTTP, SSH, FTP)
+- **Hostname & IP Resolution:** Seamlessly accepts both raw IP addresses (e.g., `192.168.1.1`) and domain names (e.g., `scanme.nmap.org`).
+- **Custom Port Range:** Target specific standard ranges (e.g., `1-1024`) or full scan ranges (`1-65535`).
+- **Real-Time Stream:** Live terminal feedback as open ports are discovered.
+- **Service Mapping:** Automatically resolves common standard port numbers to their associated protocols (e.g., HTTP, SSH, FTP, HTTPS).
+- **Result Export:** Option to save scan results into a file for further analysis.
 
 ---
 
-## 📁 Files
+## 📁 Repository Structure
 
-| File | Description |
-|---|---|
-| `portscanner.py` | Main scanner script |
-| `req.txt` | Python dependencies |
-
----
-
-## ⚙️ Installation
-
-```bash
-git clone https://github.com/ShehanSulakshana/PortScanner.git
-cd PortScanner
-pip install -r req.txt
+```text
+PortScanner/
+├── portscanner.py   # Main application script
+├── req.txt          # Project dependencies
+├── LICENSE          # MIT License
+└── README.md        # Project documentation
 ```
 
 ---
 
-## 🚀 Usage
+## ⚙️ Quick Start
 
-```bash
-python portscanner.py
-```
+### Prerequisites
 
-You'll be prompted for:
+- Python 3.8 or higher installed on your system.
 
-| Input | Example | Notes |
-|---|---|---|
-| Host / IP | `192.168.1.1` or `example.com` | Domains are auto-resolved to IP |
-| Port range | `1-1024` | Larger ranges take more time |
+### Setup
 
----
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ShehanSulakshana/PortScanner.git
+   cd PortScanner
+   ```
 
-## 📤 Sample Output
+2. **Install dependencies:**
+   ```bash
+   pip install -r req.txt
+   ```
 
-```
-Scanning 192.168.1.1 from port 1 to 1024...
-
-[OPEN]  Port 22   →  SSH
-[OPEN]  Port 80   →  HTTP
-[OPEN]  Port 443  →  HTTPS
-
-Scan complete. 3 open ports found.
-Save results to file? (y/n):
-```
+3. **Run the scanner:**
+   ```bash
+   python portscanner.py
+   ```
 
 ---
 
-## 🛡️ Cybersecurity Context
+## 🛡️ Cybersecurity Application
 
-Port scanning is a fundamental technique used in:
+Understanding port scanning techniques is critical for several core cybersecurity domains:
 
-- **Penetration Testing** — mapping attack surfaces before an engagement
-- **Network Administration** — auditing which services are exposed
-- **CTF Challenges** — reconnaissance phase of any challenge
-- **Vulnerability Assessment** — identifying potentially dangerous open ports
+- **Penetration Testing:** Initial discovery phase to map out an organization's exposed attack surface.
+- **Network Administration:** Auditing internal and perimeter firewalls to prevent unauthorized external services from being exposed.
+- **CTF & Lab Challenges:** Essential skill for host discovery in controlled hacking environments.
 
-This tool provides the same core functionality as industry tools like `nmap`, built from scratch in Python to understand what's happening under the hood.
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to check the [issues page](https://github.com/ShehanSulakshana/PortScanner/issues) if you want to contribute.
 
 ---
 
 ## 📜 License
 
-[MIT](LICENSE)
+Distributed under the MIT License. See `LICENSE` for more details.
 
 ---
 
 ## 👨‍💻 Author
 
 **Shehan Sulakshana**  
-Cybersecurity undergraduate | Python & Security enthusiast  
-[GitHub](https://github.com/ShehanSulakshana)
+Cybersecurity Undergraduate | Python & Network Security Enthusiast  
+- **GitHub:** [@ShehanSulakshana](https://github.com/ShehanSulakshana)
 
 ---
 
-> *"You can't defend what you can't see."* 🛡️
+> *"You can't defend what you can't see."*
